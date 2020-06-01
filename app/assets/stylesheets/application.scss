@@ -3,6 +3,10 @@
 
 $color-white: #ffffff;
 
+* {
+  box-sizing: border-box;
+}
+
 .flash-box {
   width: 100vw;
   height: 30px;
@@ -52,7 +56,7 @@ $color-white: #ffffff;
 //左ボディここから
 
 .left-body {
-  height: calc(100vh - 148px);
+  height: calc(100vh - 100px);
   padding: 20px 20px 0;
   background-color: #2f3e51;
   overflow: scroll;
@@ -124,7 +128,7 @@ $color-white: #ffffff;
 //右ボディここから
 
 .right-body {
-  height: calc(100vh - 265px);
+  height: calc(100vh - 150px);
   padding: 46px 40px 0 40px;
   background-color: #fafafa;
   overflow: scroll;

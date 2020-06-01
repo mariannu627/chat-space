@@ -11,25 +11,3 @@
             = fa_icon 'cog'
 
   .left-body
-
-.chat-right-side
-  .right-header
-    .header-title
-      %h1.group-name group-name
-      %ul.member member :
-      = render partial: "main_chat"
-    .edit-group
-      %a{ :href => 'http://google.co.jp', :class => 'edit-btn' }
-        Edit
-
-  .right-body
-    = render partial: "main_chat"
-
-  .right-bottom
-    .input-form
-      .input-form__text-box
-        %input.input-box-text{placeholder: "type a message"}
-        %label.input-box-image
-        = link_to"#", class: "input-box-image" do
-          = fa_icon 'image'
-      %input.input-form__submit-btn{type: "submit", value: "Send"} 
