@@ -128,7 +128,7 @@ $color-white: #ffffff;
 //右ボディここから
 
 .right-body {
-  height: calc(100vh - 150px);
+  height: calc(100vh - 190px);
   padding: 46px 40px 0 40px;
   background-color: #fafafa;
   overflow: scroll;
@@ -159,13 +159,13 @@ $color-white: #ffffff;
 //右フォームここから
 
 .right-bottom {
-  height: 50px;
+  height: 90px;
   padding: 20px 40px;
-  background-color: #ddd;
+  background-color: #d2d2d2;
 }
 
 .input-form {
-  width: calc(100vw - 505px);
+  width: calc(100vw - 495px);
   height: 50px;
   justify-content: space-between;
   display: flex; 
@@ -184,7 +184,7 @@ $color-white: #ffffff;
 .input-box-text {
   width: calc(100vw - 545px);
   height: 50px;
-  padding: 0 40px 0 10px;
+  padding: 0 40px 0 15px;
   font-size: 16px;
   color: #434a54;
   border-style: none;
@@ -192,8 +192,12 @@ $color-white: #ffffff;
 
 .input-box-image {
   font-size: 21px;
+  padding: 0 60px 0 10px;
   color: black;
   position: absolute;
   top: 10px;
   right: 0px;
+  .image{
+    display: none;
+  }
 } 

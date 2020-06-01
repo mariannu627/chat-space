@@ -40,6 +40,6 @@
       .input-form__text-box
         %input.input-box-text{placeholder: "type a message"}
         %label.input-box-image
-        = link_to"#", class: "input-box-image" do
+          %input.image{type: "file"}
           = fa_icon 'image'
       %input.input-form__submit-btn{type: "submit", value: "Send"} 
