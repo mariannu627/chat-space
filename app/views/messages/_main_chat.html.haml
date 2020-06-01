@@ -3,9 +3,8 @@
     .header-title
       %h1.group-name group-name
       %ul.member member :
-      -# = render partial: "main_chat"
     .edit-group
-      %a{ :href => 'http://google.co.jp', :class => 'edit-btn' }
+      %a{ link_to => 'http://google.co.jp', :class => 'edit-btn' }
         Edit
 
   .right-body
