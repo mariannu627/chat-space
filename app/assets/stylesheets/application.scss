@@ -1,5 +1,7 @@
 @import "reset";
+@import "config/colors";
 @import "font-awesome";
 @import "variables.scss";
-@import "modules/viwe_all.scss";
-
+@import "models/viwe_all.scss";
+@import "models/user";
+@import "models/flash";
