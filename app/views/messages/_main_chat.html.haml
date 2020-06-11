@@ -14,9 +14,9 @@
   .right-bottom
     .form
       = form_for [@group, @message] do |f|
-        = f.text_field :content, class: 'input-form', placeholder: 'type a message'
+        = f.text_field :content, class: 'input-form', placeholder: ' type a message'
         .form__mask
-          = f.label :image, class: '' do
-            = fa_icon 'image' 
+          = f.label :image, class: 'input-box-image' do
+            = fa_icon 'image', class: "image"
             = f.file_field :image, class: 'input-box-text'
-        = f.submit :Send, class: 'input-box-image'
+        = f.submit :Send, class: 'submit-btn'
