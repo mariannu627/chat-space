@@ -1,7 +1,6 @@
 $(function(){
-
   function buildHTML(message){
-    image = ( message.image ) ? `<img class="lower-message__image" src=${message.image} >` : ""; 
+    if ( message.image ) {
                 var html = //変数htmlの定義
                 ` <div class="message" data-message-id="${message.id}">
                 <div class="upper-message">
@@ -9,7 +8,7 @@ $(function(){
                     ${message.user_name}
                   </div>
                   <div class="upper-message__date">
-                    ${message.date}
+                    ${message.created_at}
                   </div>
                 </div>
                 <div class="lower-message">
@@ -20,7 +19,7 @@ $(function(){
                 </div>
               </div>`
           return html; //return文
-  } else {
+    } else {
             var html =
              `<div class="message" data-message-id=${message.id}>
                 <div class="message__info">
@@ -28,7 +27,7 @@ $(function(){
                     ${message.user_name}
                   </div>
                   <div class="message__info__date">
-                    ${message.date}
+                    ${message.created_at}
                   </div>
                 </div>
                 <div class="message__text">
@@ -38,16 +37,16 @@ $(function(){
                 </div>
               </div>`
             return html;
-  };
-});
+    };
+  }
 
   $('#new_message').on('submit', function(e){
-    e.preventDefault();
+    e.preventDefault()
     var formData = new FormData(this);
     var url = $(this).attr('action')
     $.ajax({
       url: url,
-      type: "POST",
+      type: 'POST',
       data: formData,
       dataType: 'json',
       processData: false,
@@ -55,12 +54,13 @@ $(function(){
     })  
     .done(function(data){ //非同期通信の結果として返ってくるデータが引数(data)に入る
       var html = buildHTML(data); //return文の戻り先で、完成したHTMLを受け取る
-      $('.messages').append(html);
+      $('.right-body').append(html);
       $("form")[0].reset(); //form内を空にする記述
-      $('.messages').animate({ scrollTop:$('.messages')[0].scrollHeight});
+      $('.right-body').animate({ scrollTop:$('.right-body')[0].scrollHeight});
       $('.submit-btn').prop('disabled', false);
     })
     .fail(function() {
       alert("メッセージ送信に失敗しました");
     })
-  })
+  });
+});

@@ -11,7 +11,7 @@ class MessagesController < ApplicationController
     if @message.save #投稿できたとき
       respond_to do |format|
         format.html { redirect_to group_messages_path(@group), notice: 'メッセージが送信されました' } #HTML形式のリクエストに対してのレスポンス
-        format.json #json形式のリクエストに対してのレスポンス(この後create.json.jbuilderに遷移される)
+        format.json
       end 
     else
       @messages = @group.messages.includes(:user)
