@@ -42,6 +42,11 @@ $(function(){
 
   $('#new_message').on('submit', function(e){
     e.preventDefault()
+    if (document.location.href.match(/\/groups\/\d+\/messages/)) {
+      setInterval(reloadMessages, 7000);
+    }
+});
+    var last_message_id = $('.message:last').data("message-id");
     var formData = new FormData(this);
     var url = $(this).attr('action')
     $.ajax({
@@ -52,15 +57,20 @@ $(function(){
       processData: false,
       contentType: false
     })  
-    .done(function(data){ //非同期通信の結果として返ってくるデータが引数(data)に入る
-      var html = buildHTML(data); //return文の戻り先で、完成したHTMLを受け取る
-      $('.right-body').append(html);
-      $("form")[0].reset(); //form内を空にする記述
-      $('.right-body').animate({ scrollTop:$('.right-body')[0].scrollHeight});
-      $('.submit-btn').prop('disabled', false);
-    })
+    .done(function(data){ 
+      if (messages.length !== 0) {
+//追加するHTMLの入れ物を作る
+var insertHTML = '';
+//配列messagesの中身一つ一つを取り出し、HTMLに変換したものを入れ物に足し合わせる
+$.each(messages, function(i, message) {
+  insertHTML += buildHTML(message)
+});
+//メッセージが入ったHTMLに、入れ物ごと追加
+$('.messages').append(insertHTML);
+$('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight});
+      }
+  })
     .fail(function() {
       alert("メッセージ送信に失敗しました");
     })
   });
-});
