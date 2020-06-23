@@ -53,7 +53,7 @@ $(function(){
       //dataオプションでリクエストに値を含める
       data: {id: last_message_id}
     })
-  };
+  
   .done(function(messages) {
     if (messages.length !== 0) {
       //追加するHTMLの入れ物を作る
@@ -65,8 +65,9 @@ $(function(){
       //メッセージが入ったHTMLに、入れ物ごと追加
       $('.messages').append(insertHTML);
       $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight});
-    }
-
+      }
+    })
+  };
  ////以下 メッセージ非同期通信
 
   $('#new_message').on('submit', function(e){
