@@ -15,7 +15,7 @@ $(function(){
                   <p class="lower-message__content">
                   ${message.content}
                   </p>
-                  ${image}
+                  <img src=${message.image} >
                 </div>
               </div>`
           return html; //return文
@@ -86,9 +86,6 @@ $(function(){
       contentType: false
     })  
     .done(function(data){ 
-      if (document.location.href.match(/\/groups\/\d+\/messages/)) {
-        setInterval(reloadMessages, 7000);
-      }
       var html = buildHTML(data); //return文の戻り先で、完成したHTMLを受け取る
       $('.right-body').append(html);
       $("form")[0].reset(); //form内を空にする記述
