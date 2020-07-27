@@ -18,5 +18,10 @@
           .group__name
             = group.name
           .group__message
-          メッセージはまだありません
+            - if group.messages.last.content.present?
+              = group.messages.last.content
+            - elsif group.messages.last.image.present?
+              画像が投稿されています
+            - else
+              メッセージはまだありません
   
