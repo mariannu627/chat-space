@@ -63,8 +63,8 @@ $(function(){
         insertHTML += buildHTML(message)
       });
       //メッセージが入ったHTMLに、入れ物ごと追加
-      $('.messages').append(insertHTML);
-      $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight});
+      $('.right-body').append(insertHTML);
+      $('.right-body').animate({ scrollTop: $('.right-body')[0].scrollHeight});
       }
     })
 
