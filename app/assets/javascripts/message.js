@@ -53,6 +53,7 @@ $(function(){
       //dataオプションでリクエストに値を含める
       data: {id: last_message_id}
     })
+
     .done(function(messages) {
     if (messages.length !== 0) {
       //追加するHTMLの入れ物を作る
@@ -66,11 +67,11 @@ $(function(){
       $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight});
       }
     })
+
     .fail(function() {
       alert('error');
     });
   };
-
  ////以下 メッセージ非同期通信
 
   $('#new_message').on('submit', function(e){
@@ -96,8 +97,7 @@ $(function(){
       alert("メッセージ送信に失敗しました");
       $('.submit-btn').prop('disabled', false);
     })
-  });
-
+  })
   if (document.location.href.match(/\/groups\/\d+\/messages/)) {
     setInterval(reloadMessages, 7000);
   };
