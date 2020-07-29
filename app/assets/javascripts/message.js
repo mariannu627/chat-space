@@ -15,7 +15,7 @@ $(function(){
                   <p class="lower-message__content">
                   ${message.content}
                   </p>
-                  ${image}
+                  <img src=${message.image} >
                 </div>
               </div>`
           return html; //return文
@@ -53,8 +53,8 @@ $(function(){
       //dataオプションでリクエストに値を含める
       data: {id: last_message_id}
     })
-  
-  .done(function(messages) {
+
+    .done(function(messages) {
     if (messages.length !== 0) {
       //追加するHTMLの入れ物を作る
       var insertHTML = '';
@@ -67,6 +67,10 @@ $(function(){
       $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight});
       }
     })
+
+    .fail(function() {
+      alert('error');
+    });
   };
  ////以下 メッセージ非同期通信
 
@@ -83,9 +87,6 @@ $(function(){
       contentType: false
     })  
     .done(function(data){ 
-      if (document.location.href.match(/\/groups\/\d+\/messages/)) {
-        setInterval(reloadMessages, 7000);
-      }
       var html = buildHTML(data); //return文の戻り先で、完成したHTMLを受け取る
       $('.right-body').append(html);
       $("form")[0].reset(); //form内を空にする記述
@@ -94,6 +95,7 @@ $(function(){
     })
     .fail(function() {
       alert("メッセージ送信に失敗しました");
+      $('.submit-btn').prop('disabled', false);
     })
   })
   if (document.location.href.match(/\/groups\/\d+\/messages/)) {
